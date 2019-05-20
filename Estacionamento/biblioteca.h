@@ -129,9 +129,7 @@ void retira(tipoItem x, apontador *p, int *operacao){
   apontador aux;
   if ((*p) == NULL)
      *operacao = 0;
-  else if (x.placa[0] < (*p)->item.placa[0]) retira(x, (&(*p)->esq), operacao);
-  else if (x.placa[0] > (*p)->item.placa[0]) retira(x, (&(*p)->dir), operacao);
-  else{
+  else if(strcmp(x.placa,(*p)->item.placa) == 0){
     *operacao = 1;
     if ((*p)->dir == NULL){
       aux = *p;
@@ -145,6 +143,30 @@ void retira(tipoItem x, apontador *p, int *operacao){
     }
     else antecessor((*p), (&(*p)->esq));
   }
+  else if (x.placa[0] < (*p)->item.placa[0]) retira(x, (&(*p)->esq), operacao);
+  else retira(x, (&(*p)->dir), operacao);
+}
+
+void retiraD(tipoItem x, apontador *p, int *operacao){
+  apontador aux;
+  if ((*p) == NULL)
+     *operacao = 0;
+  else if(strcmp(x.proprietario,(*p)->item.proprietario) == 0){
+    *operacao = 1;
+    if ((*p)->dir == NULL){
+      aux = *p;
+      *p = (*p)->esq;
+      free(aux);
+    }
+    else if ((*p)->esq == NULL){
+      aux = *p;
+      *p = (*p)->dir;
+      free(aux);
+    }
+    else antecessor((*p), (&(*p)->esq));
+  }
+  else if (x.proprietario[0] < (*p)->item.proprietario[0]) retira(x, (&(*p)->esq), operacao);
+  else retira(x, (&(*p)->dir), operacao);
 }
 
 void removerNos(apontador *placas, apontador *donos){
@@ -154,8 +176,11 @@ void removerNos(apontador *placas, apontador *donos){
   printf("Digite a placa do carro a ser apagado:\n");
   fflush(stdin);
   x.placa = recebeString(x.placa);
+  printf("Digite o nome do proprietario do carro a ser apagado:\n");
+  fflush(stdin);
+  x.placa = recebeString(x.placa);
   retira(x, placas, &operacao);
-  retira(x, donos, &operacao);
+  retiraD(x, donos, &operacao);
   if (operacao == 1)printf("\n\nItem removido.");
   else printf("\n\nRegistro nao encontrado.");
   printf("\n\nPressione [algo] para prosseguir.");

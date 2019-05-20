@@ -22,11 +22,8 @@ void main() {
     gotoxy(coluna,linha++);printf("| 0) SAIR                                       |");
     gotoxy(coluna,linha++);printf("| [?] OPCAO DESEJADA                            |");
     gotoxy(coluna,linha);  printf("|_______________________________________________|");
-    while(opcao < 0 && opcao > 6)
-    {
-      fflush(stdin);
-      gotoxy((coluna+3),(linha-1));scanf("%d",&opcao);
-    }
+    fflush(stdin);
+    gotoxy((coluna+3),(linha-1));scanf("%d",&opcao);
 
     switch(opcao) 
     {
