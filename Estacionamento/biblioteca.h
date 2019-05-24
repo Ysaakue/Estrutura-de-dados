@@ -178,7 +178,7 @@ void removerNos(apontador *placas, apontador *donos){
   x.placa = recebeString(x.placa);
   printf("Digite o nome do proprietario do carro a ser apagado:\n");
   fflush(stdin);
-  x.placa = recebeString(x.placa);
+  x.proprietario = recebeString(x.proprietario);
   retira(x, placas, &operacao);
   retiraD(x, donos, &operacao);
   if (operacao == 1)printf("\n\nItem removido.");
