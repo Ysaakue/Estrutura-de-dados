@@ -73,7 +73,7 @@ void insere(tipoItem x, apontador *p){
   else if(x.codigo == (*p)->filme.codigo)
   {
     printf("codigo já registrado");
-    printf("\n\nPressione [algo] para prosseguir.");
+    printf("\n\nPressione qualquer tecla para continuar");
     getch();
 
   }
@@ -176,7 +176,7 @@ void removerNos(apontador *arvore){
   if (operacao == 1)printf("\n\nItem removido.");
   else printf("\n\nRegistro nao encontrado.");
   
-  printf("\n\nPressione [algo] para prosseguir.");
+  printf("\n\nPressione qualquer tecla para continuar");
   getch();
 }
 
@@ -215,6 +215,7 @@ void alugar(apontador *p, bool *achou, int codigo)
   else if(codigo == (*p)->filme.codigo ){
     if((*p)->filme.alugado)
     {
+      cls();
       printf("filme já alugado");
       printf("\n\nPressione qualquer tecla para prosseguir.");
       fflush(stdin);
@@ -222,17 +223,19 @@ void alugar(apontador *p, bool *achou, int codigo)
     }
     else
     {
+      cls();
       printf("Nome: %s\n", (*p)->filme.nome);
       printf("Codigo: %d\n", (*p)->filme.codigo);
       
       printf("Esse e o filme que deseja alugar?[y/n]");
+      fflush(stdin);
       char c = getch();
       if(c=='y' || c=='Y')(*p)->filme.alugado = true;
       *achou = true;
     }
   }
-  else if(codigo < (*p)->filme.codigo) buscaFilme((&(*p)->esq),achou,codigo);
-  else buscaFilme((&(*p)->dir),achou,codigo);
+  else if(codigo < (*p)->filme.codigo) alugar((&(*p)->esq),achou,codigo);
+  else alugar((&(*p)->dir),achou,codigo);
 }
 
 void Filme(apontador *raiz)
@@ -244,4 +247,42 @@ void Filme(apontador *raiz)
   scanf("%d",&codigo);
 
   alugar(raiz , &achou, codigo);
+}
+
+void devolver(apontador *p, bool *achou, int codigo)
+{
+  if((*p)==NULL) *achou = false;
+  else if(codigo == (*p)->filme.codigo ){
+    if(!(*p)->filme.alugado)
+    {
+      printf("filme já foi devolvido");
+      printf("\n\nPressione qualquer tecla para prosseguir.");
+      fflush(stdin);
+      getch();
+    }
+    else
+    {
+      printf("Nome: %s\n", (*p)->filme.nome);
+      printf("Codigo: %d\n", (*p)->filme.codigo);
+      
+      printf("Esse e o filme que deseja devolver?[y/n]");
+      fflush(stdin);
+      char c = getch();
+      if(c=='y' || c=='Y')(*p)->filme.alugado = false;
+      *achou = true;
+    }
+  }
+  else if(codigo < (*p)->filme.codigo) devolver((&(*p)->esq),achou,codigo);
+  else devolver((&(*p)->dir),achou,codigo);
+}
+
+void Filme2(apontador *raiz)
+{
+  int codigo;
+  bool achou;
+  cls();
+  printf("Digite o codigo do filme que deseja devolver:");
+  scanf("%d",&codigo);
+
+  devolver(raiz , &achou, codigo);
 }

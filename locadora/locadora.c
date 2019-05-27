@@ -34,15 +34,28 @@ void main()
             case 0: break;
             case 1: inserirNos(&locadora); break;
             case 2: removerNos(&locadora); break;
-            case 3: Filme(&locadora);break;
+            case 3: 
+                Filme(&locadora);
+                printf("\nFilme alugado com sucesso");
+                printf("\n\nPressione qualquer tecla para continuar");
+                fflush(stdin);
+                getch();
+                break;
 
+            case 4: 
+                Filme2(&locadora);
+                printf("\nFilme devolvido com sucesso");
+                printf("\n\nPressione qualquer tecla para continuar");
+                fflush(stdin);
+                getch();
+                break;
 
             case 5:
                 system("cls");
                 em_ordem(locadora,1,&imprimiu);
                 if(!imprimiu) printf("Sem registros disponiveis!\n\n\n");
                 imprimiu=false;
-                printf("\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR");
+                printf("\n\nPressione qualquer tecla para continuar");
                 fflush(stdin);
                 getch();
                 break;
@@ -52,7 +65,7 @@ void main()
                 em_ordem(locadora,2,&imprimiu);
                 if(!imprimiu) printf("Sem registros alugados!\n\n\n");
                 imprimiu=false;
-                printf("\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR");
+                printf("\n\nPressione qualquer tecla para continuar");
                 fflush(stdin);
                 getch();
                 break;
@@ -62,7 +75,7 @@ void main()
                 em_ordem(locadora,3,&imprimiu);
                 if(!imprimiu) printf("Sem registros cadastrados!\n\n\n");
                 imprimiu=false;
-                printf("\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR");
+                printf("\n\nPressione qualquer tecla para continuar");
                 fflush(stdin);
                 getch();
                 break;
