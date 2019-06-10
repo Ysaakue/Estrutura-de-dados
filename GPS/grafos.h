@@ -1,7 +1,6 @@
 // DEFINIÇÃOO DE BIBLIOTECAS
 #include <stdio.h>
 #include <string.h>
-#include <conio.h>
 #include <unistd.h>
 #include <stdbool.h>
 
@@ -87,22 +86,26 @@
 #define TO 25
 
 // DEFINIÇÃOO DA STRUCT
-struct no{
+typedef struct
+{
 	char nome[20];
 	char sigla[2];
-};
+} no;
 
-struct arco{
+typedef struct
+{
 	bool adj;
 	int distancia;
-};
+}arco;
 
-struct graph{
-	struct no nos[quantidade];
-	struct arco matriz[quantidade][quantidade];
-};
+typedef struct
+{
+	no nos[quantidade];
+	arco matriz[quantidade][quantidade];
+} graph;
 
-// DEFINIÇÃO DE FUNÇÕES
+// DEFINIÇÃO DE FUNÇÕES ************************************************
+
 void continuar()
 {
 	puts("\nPRESSIONE ENTER PARA CONTINUAR");
@@ -111,7 +114,7 @@ void continuar()
 
 //**********************************************************************
 
-void iniciar(struct graph *grafo)
+void iniciar(graph *grafo)
 {
 	int x,y;
 
@@ -193,15 +196,96 @@ void iniciar(struct graph *grafo)
 	strcpy(grafo->nos[25].nome,"Tocantins");
 	strcpy(grafo->nos[25].sigla,"TO");
 
-	for(x=0;x<quantidade;x++)
+	x=Acre;
+	for(y=0;y<quantidade;y++)
 	{
-		for(y=0;y<quantidade;y++)
-		{
-			grafo->matriz[x][y].adj=false;
-		}
+		if(y == Amazonas)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
 	}
 
+	x=Alagoas;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y ==Bahia || y==Pernambuco || y==Sergipe )grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Amapa;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y ==Para)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
 	
+	x=Amazonas;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y == Acre || y==Roraima || y==Para || y==Mato_Grosso || y==Rondonia )grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Bahia;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Sergipe || y==Alagoas || y==Pernambuco || y==Piaui || y==Tocantins || y==Goias || y==Minas_Gerais || y==Espirito_Santo )grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Ceara;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Piaui || y==Pernambuco || y==Paraiba || y==Rio_Grande_do_Norte)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+	
+	x=Espirito_Santo;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Bahia || y==Minas_Gerais || y==Rio_de_Janeiro)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+	
+	x=Goias;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Mato_Grosso_do_Sul || y==Minas_Gerais || y==Bahia || y==Tocantins || y==Mato_Grosso)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Maranhao;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Piaui || y==Tocantins || y==Para)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Mato_Grosso;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Rondonia || y==Amazonas || y==Para || y==Tocantins || y==Goias || y==Mato_Grosso_do_Sul)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Mato_Grosso_do_Sul;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Mato_Grosso || y==Goias || y==Minas_Gerais || y==Sao_Paulo || y==Parana)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+	
+	x=Minas_Gerais;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Rio_de_Janeiro || y==Espirito_Santo || y==Bahia || y==Goias || y==Mato_Grosso_do_Sul || y==Sao_Paulo)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+	
+	x=Para;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Maranhao || y==Tocantins || y==Mato_Grosso || y==Amazonas || y==Roraima)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
 }
 
 
