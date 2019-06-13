@@ -286,6 +286,97 @@ void iniciar(graph *grafo)
 		if(y==Maranhao || y==Tocantins || y==Mato_Grosso || y==Amazonas || y==Roraima)grafo->matriz[x][y].adj = true;
 		else grafo->matriz[x][y].adj=false;
 	}
+
+	x=Paraiba;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Rio_Grande_do_Norte || y==Ceara || y==Pernambuco)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Parana;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Mato_Grosso_do_Sul || y==Sao_Paulo || y==Santa_Catarina)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Pernambuco;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Ceara || y==Paraiba || y==Piaui || y==Sergipe || y==Bahia)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Piaui;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Ceara || y==Pernambuco || y==Bahia || y==Tocantins || y==Maranhao)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Rio_de_Janeiro;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Espirito_Santo || y==Minas_Gerais || y==Sao_Paulo)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Rio_Grande_do_Norte;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Ceara || y==Paraiba)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Rio_Grande_do_Sul;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Santa_Catarina)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Rondonia;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Mato_Grosso || y==Amazonas)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Roraima;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Amazonas || y==Para)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Santa_Catarina;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Parana || y==Rio_Grande_do_Sul)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Sao_Paulo;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Rio_de_Janeiro || y==Minas_Gerais || y==Mato_Grosso_do_Sul || y==Parana)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Sergipe;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Alagoas || y==Bahia)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
+
+	x=Tocantins;
+	for(y=0;y<quantidade;y++)
+	{
+		if(y==Bahia || y==Maranhao || y==Para || y==Mato_Grosso || y==Goias)grafo->matriz[x][y].adj = true;
+		else grafo->matriz[x][y].adj=false;
+	}
 }
 
 
