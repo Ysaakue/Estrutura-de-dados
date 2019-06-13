@@ -315,6 +315,7 @@ void CriptografarArquivo(FILE *arquivo)
                 primeiro_numero = rand() % 100;
                 primeira_operacao = rand() % 2;
                 i=0;
+                numero_usado = primeiro_numero;
 
                 if(primeira_operacao)
                 {
@@ -322,11 +323,11 @@ void CriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2==0)
                         {
-                            mensagem[i] = mensagem[i]+(numero_usado++);
+                            mensagem[i] = mensagem[i] + numero_usado++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]-(numero_usado++);
+                            mensagem[i] = mensagem[i] - numero_usado++;
                         }
                         i++;
                     }
@@ -337,11 +338,11 @@ void CriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2!=0)
                         {
-                            mensagem[i] = mensagem[i]+(numero_usado++);
+                            mensagem[i] = mensagem[i]+numero_usado++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]-(numero_usado++);
+                            mensagem[i] = mensagem[i]-numero_usado++;
                         }
                     }
                     i++;
@@ -384,6 +385,7 @@ void CriptografarArquivo(FILE *arquivo)
                 primeiro_numero = rand() % 100;
                 primeira_operacao = rand() % 2;
                 i=0;
+                numero_usado = primeiro_numero;
                 
 
                 if(primeira_operacao)
@@ -392,11 +394,11 @@ void CriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2==0)
                         {
-                            mensagem[i] = mensagem[i]+(primeiro_numero++);
+                            mensagem[i] = mensagem[i]+numero_usado++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]-(primeiro_numero++);
+                            mensagem[i] = mensagem[i]-numero_usado++;
                         }
                         i++;
                     }
@@ -407,17 +409,17 @@ void CriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2!=0)
                         {
-                            mensagem[i] = mensagem[i]+(primeiro_numero++);
+                            mensagem[i] = mensagem[i]+numero_usado++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]-(primeiro_numero++);
+                            mensagem[i] = mensagem[i]-numero_usado++;
                         }
                     }
                     i++;
                 }
 
-                if((arquivo=fopen(NomeArquivo, "w+b"))==NULL)
+                if((arquivo=fopen(NomeArquivo, "r+b"))==NULL)
                 {
                     printf("\nERRO AO ABRIR O ARQUIVO '%s'.\n",NomeArquivo);
                     perror("fopen");
@@ -495,11 +497,11 @@ void DescriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2==0)
                         {
-                            mensagem[i] = mensagem[i]-(primeiro_numero++);
+                            mensagem[i] = mensagem[i]-primeiro_numero++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]+(primeiro_numero++);
+                            mensagem[i] = mensagem[i]+primeiro_numero++;
                         }
                         i++;
                     }
@@ -510,14 +512,14 @@ void DescriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2!=0)
                         {
-                            mensagem[i] = mensagem[i]-(primeiro_numero++);
+                            mensagem[i] = mensagem[i]-primeiro_numero++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]+(primeiro_numero++);
+                            mensagem[i] = mensagem[i]+primeiro_numero++;
                         }
+                        i++;
                     }
-                    i++;
                 }
                 
 
@@ -559,11 +561,11 @@ void DescriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2==0)
                         {
-                            mensagem[i] = mensagem[i]-(primeiro_numero++);
+                            mensagem[i] = mensagem[i]-primeiro_numero++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]+(primeiro_numero++);
+                            mensagem[i] = mensagem[i]+primeiro_numero++;
                         }
                         i++;
                     }
@@ -574,17 +576,17 @@ void DescriptografarArquivo(FILE *arquivo)
                     {
                         if(i%2!=0)
                         {
-                            mensagem[i] = mensagem[i]-(primeiro_numero++);
+                            mensagem[i] = mensagem[i]-primeiro_numero++;
                         }
                         else
                         {
-                            mensagem[i] = mensagem[i]+(primeiro_numero++);
+                            mensagem[i] = mensagem[i]+primeiro_numero++;
                         }
+                        i++;
                     }
-                    i++;
                 }
 
-                if((arquivo=fopen(NomeArquivo, "w+b"))==NULL)
+                if((arquivo=fopen(NomeArquivo, "r+b"))==NULL)
                 {
                     printf("\nERRO AO ABRIR O ARQUIVO '%s'.\n",NomeArquivo);
                     perror("fopen");
